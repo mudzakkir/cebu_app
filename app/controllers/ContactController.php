@@ -12,7 +12,7 @@ class ContactController extends \BaseController {
 		//
 	}
 
-    
+
 	/**
 	 * Show the form for creating a new resource.
 	 *
@@ -48,12 +48,11 @@ class ContactController extends \BaseController {
 			'email.required' => 'メールアドレスを正しく入力してください。',
 			'body.required' => 'メッセージを入力してください。',
 		);
-
-        $contact = ContactService::create($input);
-        $data['contact'] = $contact;
 		$validator = Validator::make($input, $rules, $messages);
 
 		if ($validator->passes()) {
+            $contact = ContactService::create($input);
+            $data['contact'] = $contact;
 			Mail::send('contact.thanks',$data, function($message) use ($contact) {
 				$message->to($contact->email, $contact->name)
 						->subject('メールの件名');
