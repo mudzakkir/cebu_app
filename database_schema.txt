@@ -1,0 +1,25 @@
+User users; hm Post; hm Contact;
+    id increments
+    username string 50
+    password string 64
+    email string 250
+    phone string 250
+    timestamps
+
+Post posts;hm Contact;
+    id increments
+    timestamps
+    title string 250
+    readmore string 250
+    content text
+    image string 250
+    price integer
+    category string 250
+    area string 250
+    rating decimal 5 2
+
+Contact contacts;
+    id increments
+    name string 50
+    email string 50
+    body string 255
